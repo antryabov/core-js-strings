@@ -152,8 +152,9 @@ function repeatString(str, times) {
  *   removeFirstOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeFirstOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeFirstOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeFirstOccurrences(str, value) {
+  const end = str.substring(str.indexOf(value)).replace(value, '');
+  return str.substring(str.indexOf(value), 0) + end;
 }
 
 /**
@@ -168,8 +169,9 @@ function removeFirstOccurrences(/* str, value */) {
  *   removeLastOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeLastOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeLastOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeLastOccurrences(str, value) {
+  const end = str.substring(str.lastIndexOf(value)).replace(value, '');
+  return str.substring(str.lastIndexOf(value), 0) + end;
 }
 
 /**
@@ -301,8 +303,15 @@ function containsSubstring(str, substring) {
  *   countVowels('aEiOu') => 5
  *   countVowels('XYZ') => 1
  */
-function countVowels(/* str */) {
-  throw new Error('Not implemented');
+function countVowels(str) {
+  let result = 0;
+  const arr = ['a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y'];
+  for (let i = 0; i < str.length; i += 1) {
+    if (arr.includes(str[i])) {
+      result += 1;
+    }
+  }
+  return result;
 }
 
 /**
@@ -318,8 +327,17 @@ function countVowels(/* str */) {
  *   isPalindrome('apple') => false
  *   isPalindrome('No lemon, no melon') => true
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  const result = [];
+
+  for (let i = str.length - 1; i >= 0; i -= 1) {
+    result.push(str[i].toLowerCase());
+  }
+
+  return (
+    str.toLowerCase().replace(/[\W]/gi, '') ===
+    result.join('').replace(/[\W]/gi, '')
+  );
 }
 
 /**
